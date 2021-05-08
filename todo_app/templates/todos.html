@@ -1,0 +1,25 @@
+<div class="px-3 pt-3 pb-3">
+
+    <form action="{{ url_for('main.add_todo') }}" method="get" autocomplete="off">
+        <label for="add_todo" class="form-label">Add a new todo</label>
+        <input type="text" class="form-control" id="add_todo" name="todo" autofocus>
+    </form>
+
+    <h2>Your todos</h2>
+    {% if todos %}
+    <ul>
+        {% for todo in todos %}
+            <li class="mb-1 flashes">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{{ url_for('main.remove_todo', todo_id=todo.id) }}" class="btn btn-danger mx-3">Remove</a>
+                        {{ todo }}
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Your list is empty ☺️</p>
+    {% endif %}
+</div>

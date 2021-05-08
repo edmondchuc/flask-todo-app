@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center">Todo App 📝</h1>
+
+{% if user.is_authenticated %}
+<p class="text-center">Hello {{ user.username }}!</p>
+{% include 'todos.html' %}
+{% else %}
+<div class="text-center">
+    <a href="{{ url_for('auth.login') }}" class="btn btn-primary">Log in</a>
+</div>
+{% endif %}
+{% endblock %}
